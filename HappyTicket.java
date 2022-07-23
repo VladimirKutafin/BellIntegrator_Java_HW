@@ -17,13 +17,26 @@ public class HappyTicket {
     public static void checkTicket(int ticketNumber) {
         String ticketNumberStr = Integer.toString(ticketNumber);
         char[] ticketNumberArr = ticketNumberStr.toCharArray();
-        int sumFirstHalfOfTicket = Integer.parseInt(String.valueOf(ticketNumberArr[0])) + Integer.parseInt(String.valueOf(ticketNumberArr[1])) + Integer.parseInt(String.valueOf(ticketNumberArr[2]));
-        int sumSecondHalfOfTicket = Integer.parseInt(String.valueOf(ticketNumberArr[3])) + Integer.parseInt(String.valueOf(ticketNumberArr[4])) + Integer.parseInt(String.valueOf(ticketNumberArr[5]));
-        if (sumFirstHalfOfTicket == sumSecondHalfOfTicket) {
-            System.out.println("It is a lucky ticket. U are cool man!");
+        int sumFirst = 0;
+        int sumSecond = 0;
+        if (ticketNumberArr.length%2 == 0){
+            for (int i = 0; i < ticketNumberArr.length; i++) {
+                if (i<ticketNumberArr.length/2) {
+                    sumFirst = sumFirst + Integer.parseInt(String.valueOf(ticketNumberArr[i]));
+                }
+                else {
+                    sumSecond = sumSecond + Integer.parseInt(String.valueOf(ticketNumberArr[i]));
+                }
+            }
+            if (sumFirst == sumSecond) {
+                System.out.println("It is a lucky ticket. U are cool man!");
+            }
+            else {
+                System.out.println("Sorry, ticket isnt lucky. U are loser!");
+            }
         }
         else {
-            System.out.println("Sorry, u are loser!");
+            System.out.println("U give me odd even number of ticket");
         }
     }
 
